@@ -5,7 +5,7 @@ function Calculator() {
     const [display, setDisplay] = useState('')
     const [history, setHistory] = useState([])
     const [checked, setCheck] = useState(false)
-    const numHash = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const numHash = [0, '.', 1, 2, 3, 4, 5, 6, 7, 8, 9];
     const operators = [
 
         { name: '+', func: (a, b) => { return a + b } },
@@ -21,7 +21,7 @@ function Calculator() {
         }
     }
     const resetter = (type) => {
-        setFormula({first: parseInt(display), ops: type })
+        setFormula({first: parseFloat(display), ops: type })
         setDisplay('')
     }
     
@@ -61,14 +61,20 @@ function Calculator() {
 
                     <button id="clear" onClick={() => { setDisplay('') }}>Clear</button>
                     <button onClick={() => triggerHx()}>History</button>
-                    <button style={{flex: '1'}} onClick={() => solution()}>=</button>
+                    <button onClick={() => solution()}>=</button>
                 </div>
-            </section>
+                </section>
             <div className="sideStaff" style={{display: checked ? 'block' : 'none'}}>
-                {history.map((each, key) => (
-                    <p key={key}>{each.first} {each.ops} {each.second} = {each.total}</p>
-                ))}
+                <button onClick={() => triggerHx()} >X</button>
+                {
+                    history.length?
+                    history.map((each, key) => (
+                        <p key={key}>{each.first} {each.ops} {each.second} =<span> {each.total}</span></p>
+                    )) :
+                    <p>No calculations are saved</p>
+                }
             </div>
+            
 
         </>
     )

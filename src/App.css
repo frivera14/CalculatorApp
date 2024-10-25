@@ -12,7 +12,8 @@
   border: solid black 1px;
   border-radius: 7%;
   box-shadow: inset -3px -3px 4px rgb(0, 0, 0, .50);
-  background-color:rgba(228, 210, 186, 0.476)
+  background-color:rgba(228, 210, 186, 0.476);
+  position: relative;
 }
 
 .read-the-docs {
