@@ -1,4 +1,4 @@
-import {useState } from "react";
+import {useState} from "react";
 
 function Calculator() {
     const [formula, setFormula] = useState({ first: '', ops: 0, second: '', total: '' })
@@ -7,11 +7,11 @@ function Calculator() {
     const [checked, setCheck] = useState(false)
     const numHash = [0, '.', 1, 2, 3, 4, 5, 6, 7, 8, 9];
     const operators = [
-
         { name: '+', func: (a, b) => { return a + b } },
         { name: '-', func: (a, b) => { return a - b } },
         { name: '*', func: (a, b) => { return a * b } },
-        { name: "÷", func: (a, b) => { return (a / b).toFixed(4) } }];
+        { name: "÷", func: (a, b) => { return (a / b).toFixed(4) } }
+    ];
 
     const inputFunc =  (letter) => {
         if (display == formula.total) {
@@ -23,15 +23,17 @@ function Calculator() {
     const resetter = (type) => {
         setFormula({first: parseFloat(display), ops: type })
         setDisplay('')
+        return
     }
     
 
     const solution = () => {
-        let answer = operators[formula.ops].func(formula.first, parseInt(display))
+        let answer = operators[formula.ops].func(formula.first, parseFloat(display))
         setDisplay(answer)
         setFormula({total: answer})
-        history.push({first: formula.first, ops: operators[formula.ops].name, second: parseInt(display), total: answer})
+        history.push({first: formula.first, ops: operators[formula.ops].name, second: parseFloat(display), total: answer})
         setHistory(history)    
+        return
     }
 
     const triggerHx = () => {
@@ -65,14 +67,15 @@ function Calculator() {
                 </div>
                 </section>
             <div className="sideStaff" style={{display: checked ? 'block' : 'none'}}>
-                <button onClick={() => triggerHx()} >X</button>
+                <button onClick={() => triggerHx()} >❌</button>
                 {
                     history.length?
                     history.map((each, key) => (
-                        <p key={key}>{each.first} {each.ops} {each.second} =<span> {each.total}</span></p>
+                        <p key={key}>{each.first} {each.ops} {each.second} = <span> {each.total}</span></p>
                     )) :
                     <p>No calculations are saved</p>
                 }
+            
             </div>
             
 

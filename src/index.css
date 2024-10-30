@@ -76,6 +76,7 @@ max-width: 150px;
 .flexer {
   display: flex;
   justify-content: center;
+  margin: auto;
   position: relative;
   z-index: 0;
 }
@@ -128,13 +129,17 @@ max-width: 150px;
   border: 1px solid rgb(16, 0, 0);
   color: rgb(60, 134, 214);
   font-family: sans-serif;
+  z-index: 1;
+  overflow-y: scroll;
+  overflow-x: hidden;
   position: absolute;
   width: 185px;
   height: 425px;
   top: -1.5px;
   left: 122px;
-  animation: .25s forwards slideIn;
+  animation: .3s forwards 0s slideIn;
 }
+
 
 .sideStaff span {
   color: rgb(219, 67, 67);
@@ -143,17 +148,19 @@ max-width: 150px;
 
 .sideStaff p {
   display: flex;
+  flex-wrap: wrap;
   padding: 5px;
 }
 
 .sideStaff button {
-  position: absolute;
-  right: -10px;
+  /* display: inline-block; */
   color: white;
   background: none;
   box-shadow: none;
-  height: 20px;
-  top: -5px;
+  height: 5px;
+  margin-top: -8px;
+  margin-left: 120px;
+  position: sticky;
 }
 
 @keyframes slideIn {
@@ -168,5 +175,16 @@ max-width: 150px;
   to {
     opacity: 100%;
     transform: translateX(0px);
+  }
+}
+ 
+@media screen and (max-width: 500px) {
+  .inputShit {
+    max-width: fit-content;
+  }
+
+
+  .flexer {
+    width: 323px;
   }
 }
