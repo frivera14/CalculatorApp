@@ -67,7 +67,7 @@ function Calculator() {
                 </div>
                 </section>
             <div className="sideStaff" style={{display: checked ? 'block' : 'none'}}>
-                <button onClick={() => triggerHx()} >❌</button>
+                <button className="stickbitch" onClick={() => triggerHx()} >✖️</button>
                 {
                     history.length?
                     history.map((each, key) => (

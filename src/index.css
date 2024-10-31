@@ -129,9 +129,7 @@ max-width: 150px;
   border: 1px solid rgb(16, 0, 0);
   color: rgb(60, 134, 214);
   font-family: sans-serif;
-  z-index: 1;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: auto;
   position: absolute;
   width: 185px;
   height: 425px;
@@ -153,15 +151,23 @@ max-width: 150px;
 }
 
 .sideStaff button {
-  /* display: inline-block; */
-  color: white;
   background: none;
   box-shadow: none;
-  height: 5px;
-  margin-top: -8px;
-  margin-left: 120px;
-  position: sticky;
+  font-size: small;
+  height: 25px;
+  width: 25x;
+  background-color: rgba(11, 45, 8, 0.95);
 }
+
+.stickbitch {
+  position: sticky;
+  margin-left: 120px;
+  top: 5px;
+  border: solid white 1px;
+  padding: 2px;
+}
+
+
 
 @keyframes slideIn {
   from {
