@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 
 function Calculator() {
     const [formula, setFormula] = useState({ first: '', ops: 0, second: '', total: '' })
@@ -13,26 +13,26 @@ function Calculator() {
         { name: "÷", func: (a, b) => { return (a / b).toFixed(4) } }
     ];
 
-    const inputFunc =  (letter) => {
+    const inputFunc = (letter) => {
         if (display == formula.total) {
             setDisplay('' + letter)
         } else {
             setDisplay(display + letter)
         }
     }
+
     const resetter = (type) => {
-        setFormula({first: parseFloat(display), ops: type })
+        setFormula({ first: parseFloat(display), ops: type })
         setDisplay('')
         return
     }
-    
 
     const solution = () => {
         let answer = operators[formula.ops].func(formula.first, parseFloat(display))
         setDisplay(answer)
-        setFormula({total: answer})
-        history.push({first: formula.first, ops: operators[formula.ops].name, second: parseFloat(display), total: answer})
-        setHistory(history)    
+        setFormula({ total: answer })
+        history.push({ first: formula.first, ops: operators[formula.ops].name, second: parseFloat(display), total: answer })
+        setHistory(history)
         return
     }
 
@@ -42,13 +42,13 @@ function Calculator() {
 
     return (
         <>
-            <input disabled={true} className="inputShit" value={display} />
+            <input disabled={true} className="inputBox" value={display} />
             <section className="flexer">
 
                 <div className="calcGrid">
 
                     {numHash.map((e, key) => (
-                        <button onClick={() =>{inputFunc(e)}} value={e} key={key} type="button">
+                        <button onClick={() => { inputFunc(e) }} value={e} key={key} type="button">
                             <p>{e}</p>
                         </button>
                     ))}
@@ -65,20 +65,18 @@ function Calculator() {
                     <button onClick={() => triggerHx()}>History</button>
                     <button onClick={() => solution()}>=</button>
                 </div>
-                </section>
-            <div className="sideStaff" style={{display: checked ? 'block' : 'none'}}>
-                <button className="stickbitch" onClick={() => triggerHx()} >✖️</button>
+            </section>
+            <div className="sideStaff" style={{ display: checked ? 'block' : 'none' }}>
+                <button className="stickbttn" onClick={() => triggerHx()} >✖️</button>
                 {
-                    history.length?
-                    history.map((each, key) => (
-                        <p key={key}>{each.first} {each.ops} {each.second} = <span> {each.total}</span></p>
-                    )) :
-                    <p>No calculations are saved</p>
+                    history.length ?
+                        history.map((each, key) => (
+                            <p key={key}>{each.first} {each.ops} {each.second} = <span> {each.total}</span></p>
+                        )) :
+                        <p>No calculations are saved</p>
                 }
-            
-            </div>
-            
 
+            </div>
         </>
     )
 }

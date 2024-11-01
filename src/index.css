@@ -97,7 +97,7 @@ max-width: 150px;
   flex: 1;
 }
 
-.inputShit {
+.inputBox {
   max-width: 270px;
   min-height: 60px;
   background-color: rgb(25, 79, 41);
@@ -159,7 +159,7 @@ max-width: 150px;
   background-color: rgba(11, 45, 8, 0.95);
 }
 
-.stickbitch {
+.stickbttn {
   position: sticky;
   margin-left: 120px;
   top: 5px;
